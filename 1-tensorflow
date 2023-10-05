@@ -1,0 +1,50 @@
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+x=tf.constant(12,dtype='float32')
+y=tf.Variable(x+100)
+model=tf.global_variables_initializer()
+with tf.Session() as sess:
+  sess.run(model)
+  print(sess.run(y))
+x = tf.constant([14, 23, 40, 30])
+y = tf.Variable((x ** 2) + 100)
+
+# Initialize the variables
+model= tf.compat.v1.global_variables_initializer()
+
+with tf.compat.v1.Session() as sess:
+    sess.run(model)
+    result = sess.run(y)
+    print(result)
+x = tf.placeholder("float", None)
+y = x * 10 + 500
+
+with tf.Session() as sess:
+    placex = sess.run(y, feed_dict={x: [0, 5, 15, 25]})
+    print(placex)
+W=tf.Variable([2],dtype=tf.float32)
+b=tf.Variable([3],dtype=tf.float32)
+#training dataset that will be fed while training as placeholders
+x=tf.placeholder(tf.float32)
+#linear model
+model=tf.global_variables_initializer()
+y=W*x+b
+with tf.Session()  as sess:
+  sess.run(model)
+  px=sess.run(y,feed_dict={x:[5,3,3,4,5,6]})
+  print(px)
+#sequence tensors
+with tf.Session()  as sess:
+  R1=tf.random_uniform([2,3],minval=0,maxval=4)
+  print(sess.run(R1))
+ with tf.Session()  as sess:
+  R2=tf.random_normal([2,3],mean=5,stddev=4)
+  print(sess.run(R2))
+ with tf.Session()  as sess:
+   print(sess.run(tf.diag([3,-2,4])))
+with tf.Session()  as sess:
+  R3=tf.random_shuffle(tf.diag([3,-2,4]))
+  print(sess.run(R3))
+with tf.Session()  as sess:
+ R4=tf.random_crop(tf.diag([3,-2,4]),[3,2])
+ print(sess.run(R4))
