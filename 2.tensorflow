@@ -1,0 +1,12 @@
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+import numpy as np
+sess=tf.Session()
+A=tf.random_uniform([3,2])
+B=tf.fill([2,4],3.5)
+C=tf.random_normal(([3,4]))
+print(sess.run(A))
+print(sess.run(B))
+print(sess.run(C))
+print(sess.run(tf.matmul(A,B)))
+print(sess.run(tf.matmul(A,B)+C))
